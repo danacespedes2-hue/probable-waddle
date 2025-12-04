@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Archivos subidos</title>
+  <style>
+    body{font-family:system-ui,Arial,sans-serif;margin:24px;color:#222}
+    table{border-collapse:collapse;width:100%;max-width:800px}
+    th,td{border:1px solid #e1e1e1;padding:8px;text-align:left}
+    a.button{background:#007bff;color:#fff;padding:6px 10px;text-decoration:none;border-radius:4px}
+    a.button:hover{background:#0056c8}
+    .note{color:#555;margin-top:12px}
+  </style>
+</head>
+<body>
+  <h1>Archivos subidos</h1>
+  <p>Haz clic en "Abrir" para ver el archivo en una nueva pestaña.</p>
+
+  <table>
+    <thead>
+      <tr><th>Nombre</th><th>Enlace</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Archivo de ejemplo</td>
+        <td><a class="button" href="./archivo.pdf" target="_blank" rel="noopener noreferrer">Abrir</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="note">Si quieres añadir más filas, duplica la fila &lt;tr&gt; dentro del &lt;tbody&gt; y cambia el nombre y la ruta del enlace. Puedes usar rutas relativas (por ejemplo <code>./mi-fichero.jpg</code>) o URLs absolutas (por ejemplo <code>https://example.com/mi-fichero.pdf</code>).</p>
+
+  <hr>
+  <p>También puedes pegar una URL abajo y abrirla directamente:</p>
+  <input id="urlInput" type="text" placeholder="Pega la URL o ruta aquí" style="width:60%" />
+  <button id="openBtn">Abrir URL</button>
+
+  <script>
+    document.getElementById('openBtn').addEventListener('click', function(){
+      var url = document.getElementById('urlInput').value.trim();
+      if(!url){ alert('Pega primero una URL o ruta de archivo.'); return }
+      // Si es ruta relativa sin protocolo, se abre igual en nueva pestaña
+      window.open(url, '_blank', 'noopener');
+    });
+  </script>
+</body>
+</html>
